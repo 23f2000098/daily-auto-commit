@@ -8,11 +8,13 @@ on:
 jobs:
   commit-job:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write  # ✅ Allow pushing commits
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Secure authentication
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Uses GitHub Actions' built-in token
 
       - name: Make a dummy change
         run: |
